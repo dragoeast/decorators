@@ -1,12 +1,13 @@
 def decorator_function(original_function):
 
-    def wrapper_function():
-        return original_function()
+    def wrapper_function(*args, **kwargs):
+        print(f"wrapper function runs wigh {args} and {kwargs}")
+        return original_function(*args, **kwargs)
     return wrapper_function
 
-def display_function():
-    print('display function runs')
+@decorator_function
+def display_function(name, age):
+    print(f'display function runs with name: {name} and age: {age}')
 
-decorated_display = decorator_function(display_function)
 
-decorated_display()
+display_function('Krisztian', age=46)
